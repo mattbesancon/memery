@@ -1,4 +1,7 @@
 class QuizController < ApplicationController
+  def index
+  end
+  
   def start
     total = params[:number].to_i
     all = Question.find(:all).map {|x| x.id}
