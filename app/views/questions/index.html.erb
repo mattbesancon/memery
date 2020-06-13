@@ -14,13 +14,13 @@
 
 <% @questions.each do |question| %>
   <tr>
-    <td><%= question.text %></td>
+    <td><%= question.content %></td>
     <td>
       <ul>
         <% question.choices.each do |choice| %>
           <li>
-            <%= choice.text %>
-            <% if choice.correct %> (Correct) <% end %>
+            <%= choice.content %>
+            <% if choice.correctness %> (Correct) <% end %>
           </li>
         <% end %>
       </ul>

@@ -1,11 +1,11 @@
 class ChoicesController < ApplicationController
   def create
     @question = Question.find(params[:question])
-    text = params[:text]
-    correct = params[:correct] == "1"
-    new = Choice.create(:text => text, :correct => correct, :question_id => @question.id)
+    content = params[:content]
+    correctness = params[:correctness] == "1"
+    new = Choice.create(:content => content, :correctness => correctness, :question_id => @question.id)
  
-    if new.correct
+    if new.correctness
      @question.answer = new
     end
  

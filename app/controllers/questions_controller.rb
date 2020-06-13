@@ -1,7 +1,6 @@
 class QuestionsController < ApplicationController
   def index
     @questions = Question.all
-    @questions.sort! {|a,b| a.text <=> b.text}
   end
 
   def show
@@ -19,7 +18,7 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     if @question.save
-      redirect_to question_path(@questions)
+      redirect_to question_path(@question)
     else
       render 'new'
     end
@@ -37,7 +36,7 @@ class QuestionsController < ApplicationController
 
   private
 
-  def drug_params
+  def question_params
     params.require(:question).permit(:content)
   end
 end

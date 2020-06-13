@@ -1,16 +1,16 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Text:</b>
-  <%= @question.text %>
+  <b>Content:</b>
+  <%= @question.content %>
 </p>
 
 <h4>Choices</h4>
 <ul>
   <% @question.choices.each do |choice| %>
 	 <li>
-		<%= choice.text %>
-		<% if choice.correct %> (Correct) <% end %>
+		<%= choice.content %>
+		<% if choice.correctness %> (Correct) <% end %>
 		
 		<%= form_tag({:controller => "choices", :action => "destroy"}) do %>
 		  <%= hidden_field_tag :question, @question.id %>
@@ -26,11 +26,11 @@
 <%= form_tag({:controller => "choices", :action => "create"}) do %>
   <%= hidden_field_tag :question, @question.id %>
   
-  <%= label_tag :text, "Text" %><br />
-  <%= text_field_tag :text %>
+  <%= label_tag :content, "Text" %><br />
+  <%= text_field_tag :content %>
   <br />
-  <%= check_box_tag :correct %>
-  <%= label_tag :correct, "Correct" %>
+  <%= check_box_tag :correctness %>
+  <%= label_tag :correctness, "Correct" %>
   <br />
   <%= submit_tag "Create" %>
 <% end %>

@@ -3,23 +3,23 @@ class Question < ApplicationRecord
 
   def answer
     uncorrect
-    choices.select {|c| c.correct}[0]
+    choices.select {|c| c.correctness}[0]
   end	
  
   def uncorrect
-    choices.each {|c| c.correct = false}
+    choices.each {|c| c.correctness = false}
   end
  
   def answer= choice
     if !answer.nil?
-       answer.correct = false
+       answer.correctness = false
     end
     
     if choices.include? choice
-       choice.correct = true
+       choice.correctness = true
     else
        choices << choice
-       choice.correct = true
+       choice.correctness = true
     end
   end
 end

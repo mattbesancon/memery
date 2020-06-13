@@ -40,7 +40,7 @@ class QuizController < ApplicationController
     @choices  = session[:choices]
     
     @choice = choiceid ? Choice.find(choiceid) : nil
-    if @choice and @choice.correct
+    if @choice and @choice.correctness
      @correct = true
      session[:correct] += 1
     else
